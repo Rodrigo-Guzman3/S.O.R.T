@@ -4,6 +4,11 @@ from .serializers import MovieSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import render
+
+def website(request):
+        return render(request, 'movies/website.html')
+
 
 @api_view(['GET', 'POST'])
 

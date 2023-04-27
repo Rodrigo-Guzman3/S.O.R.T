@@ -31,8 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'djongo',
     'rest_framework',
     'movies',
+    #'website',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +77,7 @@ WSGI_APPLICATION = 'movies.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -82,6 +85,19 @@ DATABASES = {
     }
 }
 
+'''
+DATABASES = {
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'CSCI131Project',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                #'host': 'mongodb+srv://Con-Rez:KVc5QUF3bZdic8ig@academyawardscluster.kghzx33.mongodb.net/?retryWrites=true&w=majority'
+                'host': 'mongodb+srv://RodrigoGuzman:CSCI131@csci131project.vvfwgpm.mongodb.net/test'
+            }  
+        }
+}
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
