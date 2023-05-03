@@ -275,20 +275,31 @@ def search(request):
     # Render the search results template with the search results
     return render(request, 'search_results.html', {'results': results})    
 
+from django.contrib.auth import authenticate, login, logout
+
 def login_view(request):
+    # Check if the request method is POST (i.e. the user submitted the login form)
     if request.method == 'POST':
+        # Get the username and password from the POST data
         username = request.POST['username']
         password = request.POST['password']
+        # Authenticate the user using Django's built-in authentication system
         user = authenticate(request, username=username, password=password)
+        # If the user is authenticated, log them in and redirect to the home page
         if user is not None:
             login(request, user)
             return redirect('home')
+        # If the user is not authenticated, set an error message
         else:
             error_message = 'Invalid login credentials'
+    # If the request method is not POST, set the error message to an empty string
     else:
         error_message = ''
+    # Render the login page template with the error message (if any)
     return render(request, 'login.html', {'error_message': error_message})
 
 def logout_view(request):
+    # Log the user out using Django's built-in logout function
     logout(request)
+    # Redirect to the home page
     return redirect('home')
